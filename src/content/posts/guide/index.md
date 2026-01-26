@@ -3,7 +3,7 @@ title: "博客模板指南"
 published: 2026-01-26
 description: "如何使用这个博客模板，包含 LaTeX、Mermaid、视频嵌入等功能演示"
 cover: "./cover.jpg"
-pinned: true
+pinned: false
 encrypted: true
 password: "1215"
 tags: [Markdown, LaTeX, Mermaid, Video]

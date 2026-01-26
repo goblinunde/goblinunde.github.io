@@ -6,23 +6,22 @@ site:
     title: "Goblinunde"
     # 站点副标题
     subtitle: "数学与计算机爱好者"
-    # 语言配置
-    lang: "en"
-    # 翻译配置
+    # 语言配置 (站点内容主要语言)
+    lang: "zh"
+    # 翻译配置 (自动将中文内容翻译为访问者的浏览器语言)
     translate:
         # 启用翻译功能
         enable: true
         # 翻译服务
         service: "client.edge"
         # 显示语言选择下拉框
-        showSelectTag: false
+        showSelectTag: true
         # 自动检测用户语言
         autoDiscriminate: true
-        # 翻译时忽略的 CSS 类名
+        # 翻译时忽略的 CSS 类名 (保持原文不翻译)
         ignoreClasses:
             - "ignore"
-            - "banner-title"
-            - "banner-subtitle"
+            - "notranslate"
         # 翻译时忽略的 HTML 标签
         ignoreTags:
             - "script"
@@ -304,9 +303,11 @@ profile:
 # 公告配置
 announcement:
     # 公告标题
-    title: "欢迎"
+    title: "🎉 欢迎来到 Goblinunde"
     # 公告内容
-    content: "欢迎来到我的博客！专注 Rust、LaTeX 与 PDEs 的技术分享。"
+    content: "这里分享数学、编程与 Linux 的技术探索。专注 Rust 系统编程、LaTeX 排版与偏微分方程。"
+    # 公告类型
+    type: "info"
     # 允许用户关闭公告
     closable: true
     # 链接配置
@@ -314,7 +315,7 @@ announcement:
         # 启用链接
         enable: true
         # 链接文本
-        text: "了解更多"
+        text: "关于博主 →"
         # 链接 URL
         url: "/about/"
         # 是否外部链接
