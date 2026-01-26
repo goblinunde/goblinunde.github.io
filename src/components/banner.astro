@@ -82,6 +82,25 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
                     </li>
                 ))}
             </ul>
+            <!-- 左右切换按钮 -->
+            <button 
+                id="carousel-prev" 
+                class="carousel-nav-btn absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-all duration-300 backdrop-blur-sm"
+                aria-label="上一张"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button 
+                id="carousel-next" 
+                class="carousel-nav-btn absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-all duration-300 backdrop-blur-sm"
+                aria-label="下一张"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
         </div>
     ) : (
         <div class="relative h-full w-full">
@@ -329,6 +348,30 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
             }
 
             startCarousel();
+
+            // 添加按钮点击事件
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    desktopCtrl?.prev();
+                    mobileCtrl?.prev();
+                    // 重置定时器
+                    window.bannerCarouselState.lastSwitchTime = Date.now();
+                    startCarousel();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    desktopCtrl?.next();
+                    mobileCtrl?.next();
+                    // 重置定时器
+                    window.bannerCarouselState.lastSwitchTime = Date.now();
+                    startCarousel();
+                });
+            }
         }
     }
 

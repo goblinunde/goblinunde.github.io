@@ -57,6 +57,8 @@ site:
                 - "/assets/images/desktopWallpaper_2.jpg"
                 - "/assets/images/desktopWallpaper_3.jpg"
                 - "/assets/images/星光.jpg"
+                - "/assets/images/大桥.jpg"
+                - "/assets/images/晚上的天际线.jpg"
                 - "/assets/images/【哲风壁纸】OceanAvenue-云彩.png"
                 - "/assets/images/【哲风壁纸】云彩-停车场-城市.png"
                 - "/assets/images/【哲风壁纸】小路-树木-田野.png"
@@ -64,6 +66,19 @@ site:
                 - "/assets/images/【哲风壁纸】尾翼-改装车-日落.png"
                 - "/assets/images/【哲风壁纸】树林-竞速-蓝色赛车.png"
                 - "/assets/images/【哲风壁纸】户外-活力少女-清新.png"
+                - "/assets/images/【哲风壁纸】10K油画-1949.png"
+                - "/assets/images/【哲风壁纸】公路-冰川-原野.png"
+                - "/assets/images/【哲风壁纸】城市-夜晚-夜景.png"
+                - "/assets/images/【哲风壁纸】春日-树-白色花朵.png"
+                - "/assets/images/【哲风壁纸】夏日校园-户外写真.png"
+                - "/assets/images/【哲风壁纸】星星之火可以燎原-毛主席.png"
+                - "/assets/images/【哲风壁纸】书法-伟人-毛泽东.png"
+                - "/assets/images/【哲风壁纸】党徽-共产主义接班人.png"
+                - "/assets/images/【哲风壁纸】二次元少女-动漫插画.png"
+                - "/assets/images/【哲风壁纸】jk-jk制服-少女.png"
+                - "/assets/images/【哲风壁纸】jk-jk制服-教室.png"
+                - "/assets/images/【哲风壁纸】姮娥-室内.png"
+                - "/assets/images/【哲风壁纸】户外-晴朗-晴空美女.png"
             # 移动壁纸图片 (相对于 /public 目录; 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
             mobile:
                 - "/assets/images/mobileWallpaper_1.jpg"
@@ -71,6 +86,10 @@ site:
                 - "/assets/images/【哲风壁纸】光影-光线-壁纸.png"
                 - "/assets/images/【哲风壁纸】侧脸-壁纸-忧郁.png"
                 - "/assets/images/【哲风壁纸】工藤新一-情侣-柯南.png"
+                - "/assets/images/【哲风壁纸】坐姿-城市天际线.png"
+                - "/assets/images/【哲风壁纸】坐姿-女性-室内.png"
+                - "/assets/images/【哲风壁纸】jk制服-室内-家居.png"
+                - "/assets/images/【哲风壁纸】书法-历史名言.png"
         # 壁纸位置 ('top' | 'center' | 'bottom')
         position: "center"
         # 轮播配置 (fullscreen 和 banner 模式共享)
@@ -78,7 +97,7 @@ site:
             # 为多张图片启用轮播，否则随机显示一张图片
             enable: true
             # 轮播间隔时间 (秒)
-            interval: 3.6
+            interval: 15
             # 启用 Ken Burns 效果
             kenBurns: true
         # Banner 模式专属配置
