@@ -14,7 +14,6 @@ category: Examples
 
 This is an example of a password-protected post in the Twilight theme. The content below is encrypted using AES and can only be viewed by entering the correct password.
 
-
 ## Frontmatter Example
 
 ```yaml
@@ -29,7 +28,6 @@ password: "your-password"
 
 - `encrypted` - Whether encryption is enabled for the post.
 - `password` - The password required to unlock the content.
-
 
 ## Note
 
