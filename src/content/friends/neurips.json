@@ -1,0 +1,12 @@
+{
+    "title": "NeurIPS",
+    "imgurl": "https://nips.cc/static/core/img/NeurIPS-logo.svg",
+    "desc": "神经信息处理系统大会，顶级 AI 学术会议",
+    "siteurl": "https://nips.cc/",
+    "tags": [
+        "AI",
+        "顶会"
+    ]
+,
+    "category": "conference"
+}

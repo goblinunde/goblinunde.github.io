@@ -1,0 +1,12 @@
+{
+    "title": "Distill",
+    "imgurl": "https://distill.pub/template/distill-navbar-logo.svg",
+    "desc": "交互式机器学习可视化解释期刊",
+    "siteurl": "https://distill.pub/",
+    "tags": [
+        "机器学习",
+        "可视化"
+    ]
+,
+    "category": "deeplearning"
+}

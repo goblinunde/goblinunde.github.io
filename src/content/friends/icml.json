@@ -1,0 +1,12 @@
+{
+    "title": "ICML",
+    "imgurl": "https://icml.cc/static/core/img/ICML-logo.svg",
+    "desc": "国际机器学习大会，顶级 AI 学术会议",
+    "siteurl": "https://icml.cc/",
+    "tags": [
+        "AI",
+        "顶会"
+    ]
+,
+    "category": "conference"
+}

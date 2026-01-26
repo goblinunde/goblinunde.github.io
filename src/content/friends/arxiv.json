@@ -1,0 +1,12 @@
+{
+    "title": "arXiv",
+    "imgurl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/ArXiv_web.svg",
+    "desc": "康奈尔大学开放获取的学术论文预印本平台",
+    "siteurl": "https://arxiv.org/",
+    "tags": [
+        "预印本",
+        "学术"
+    ]
+,
+    "category": "preprint"
+}

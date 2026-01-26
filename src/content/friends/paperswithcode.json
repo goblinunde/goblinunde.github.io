@@ -1,0 +1,12 @@
+{
+    "title": "Papers With Code",
+    "imgurl": "https://production-assets.paperswithcode.com/static/logo.png",
+    "desc": "机器学习论文与代码对照平台，SOTA排行榜",
+    "siteurl": "https://paperswithcode.com/",
+    "tags": [
+        "论文",
+        "SOTA"
+    ]
+,
+    "category": "deeplearning"
+}

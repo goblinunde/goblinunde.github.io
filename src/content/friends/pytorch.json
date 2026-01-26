@@ -1,0 +1,12 @@
+{
+    "title": "PyTorch",
+    "imgurl": "https://pytorch.org/assets/images/pytorch-logo.png",
+    "desc": "Facebook 开发的开源深度学习框架",
+    "siteurl": "https://pytorch.org/",
+    "tags": [
+        "深度学习",
+        "框架"
+    ]
+,
+    "category": "deeplearning"
+}

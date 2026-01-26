@@ -1,0 +1,12 @@
+{
+    "title": "OpenAI",
+    "imgurl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
+    "desc": "ChatGPT、GPT-4 等大语言模型的开发公司",
+    "siteurl": "https://openai.com/",
+    "tags": [
+        "AI",
+        "LLM"
+    ]
+,
+    "category": "ai"
+}

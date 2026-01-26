@@ -1,0 +1,426 @@
+/**
+ * Heti 排版增强样式
+ * 从 astro-theme-retypeset 移植并适配 Tailwind CSS
+ * 项目来源: https://github.com/sivan/heti
+ */
+
+/* 💡 全局文章排版设置 */
+.heti,
+.prose,
+.custom-md {
+    word-break: break-word;
+    line-height: 1.75;
+    hyphens: auto;
+    /* 中文排版优化：增加字间距 */
+    letter-spacing: 0.025em;
+}
+
+/* 💡 中日韩文字特殊处理 */
+:lang(zh),
+:lang(ja),
+:lang(ko) {
+    letter-spacing: 0.05em;
+}
+
+/* ========== 标题样式 ========== */
+
+.heti h1,
+.heti h2,
+.heti h3,
+.heti h4,
+.heti h5,
+.heti h6,
+.custom-md h1,
+.custom-md h2,
+.custom-md h3,
+.custom-md h4,
+.custom-md h5,
+.custom-md h6 {
+    margin-top: 1.5em;
+    margin-bottom: 1rem;
+    scroll-margin-top: 5rem;
+    font-weight: 600;
+    /* 标题文字平衡 */
+    text-wrap: balance;
+    line-height: 1.33;
+}
+
+.heti h1,
+.custom-md h1 {
+    font-size: 1.75rem;
+    color: var(--primary, oklch(25% 0.005 298));
+}
+
+.heti h2,
+.custom-md h2 {
+    font-size: 1.5rem;
+    color: var(--primary, oklch(25% 0.005 298));
+}
+
+.heti h3,
+.custom-md h3 {
+    font-size: 1.25rem;
+}
+
+.heti h4,
+.custom-md h4 {
+    font-size: 1.125rem;
+}
+
+.heti h5,
+.custom-md h5 {
+    font-size: 1rem;
+}
+
+.heti h6,
+.custom-md h6 {
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+/* 连续标题间距优化 */
+.heti h1+h2,
+.heti h2+h3,
+.heti h3+h4,
+.heti h4+h5,
+.heti h5+h6,
+.custom-md h1+h2,
+.custom-md h2+h3,
+.custom-md h3+h4,
+.custom-md h4+h5,
+.custom-md h5+h6 {
+    margin-top: 1rem;
+}
+
+/* ========== 段落样式 ========== */
+
+.heti p,
+.custom-md p {
+    margin-bottom: 1rem;
+    /* 中文两端对齐 */
+    text-align: justify;
+    /* 优化文字换行 */
+    text-wrap: pretty;
+}
+
+/* ========== 链接样式 ========== */
+
+.heti a,
+.custom-md a {
+    font-weight: 600;
+    letter-spacing: normal;
+    text-decoration: underline;
+    text-decoration-thickness: 0.075em;
+    text-underline-offset: 0.1em;
+    text-decoration-color: var(--link-underline, rgba(128, 128, 128, 0.5));
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.heti a:hover,
+.custom-md a:hover {
+    color: var(--primary);
+    text-decoration-color: var(--primary);
+}
+
+/* ========== 图片样式 ========== */
+
+.heti img,
+.custom-md img {
+    margin: 1.5rem auto;
+    cursor: zoom-in;
+}
+
+.heti figure,
+.custom-md figure {
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.heti figcaption,
+.custom-md figcaption {
+    margin-top: 0.625rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary, rgba(128, 128, 128, 0.8));
+}
+
+/* ========== 代码块样式 ========== */
+
+.heti pre,
+.custom-md pre {
+    overflow-x: auto;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--codeblock-bg, rgba(0, 0, 0, 0.05));
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
+}
+
+.heti pre:hover,
+.custom-md pre:hover {
+    scrollbar-color: rgba(128, 128, 128, 0.15) transparent;
+}
+
+.heti pre code,
+.custom-md pre code {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+/* 行内代码 */
+.heti code,
+.custom-md code {
+    padding: 0.15em 0.4em;
+    border-radius: 0.375rem;
+    background-color: var(--inline-code-bg, rgba(0, 0, 0, 0.05));
+    font-size: 0.85em;
+    letter-spacing: normal;
+}
+
+/* ========== 引用块样式 ========== */
+
+.heti blockquote,
+.custom-md blockquote {
+    margin: 1.5rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid var(--blockquote-border, rgba(128, 128, 128, 0.25));
+    color: var(--text-secondary, rgba(128, 128, 128, 0.8));
+}
+
+.heti blockquote> :first-child,
+.custom-md blockquote> :first-child {
+    margin-top: 0;
+}
+
+.heti blockquote> :last-child,
+.custom-md blockquote> :last-child {
+    margin-bottom: 0;
+}
+
+/* ========== 表格样式 ========== */
+
+.heti table,
+.custom-md table {
+    margin: 1.5rem 0;
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
+}
+
+.heti table:hover,
+.custom-md table:hover {
+    scrollbar-color: rgba(128, 128, 128, 0.15) transparent;
+}
+
+.heti th,
+.heti td,
+.custom-md th,
+.custom-md td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--table-border, rgba(128, 128, 128, 0.25));
+}
+
+.heti th,
+.custom-md th {
+    font-weight: 600;
+    text-align: left;
+}
+
+/* ========== 列表样式 ========== */
+
+.heti ul,
+.heti ol,
+.custom-md ul,
+.custom-md ol {
+    margin: 1.5rem 0;
+    padding-left: 2em;
+}
+
+.heti ul ul,
+.heti ul ol,
+.heti ol ul,
+.heti ol ol,
+.custom-md ul ul,
+.custom-md ul ol,
+.custom-md ol ul,
+.custom-md ol ol {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+}
+
+.heti ul,
+.custom-md ul {
+    list-style-type: disc;
+}
+
+.heti ol,
+.custom-md ol {
+    list-style-type: decimal;
+}
+
+.heti ul ul,
+.custom-md ul ul {
+    list-style-type: circle;
+}
+
+.heti ul ul ul,
+.custom-md ul ul ul {
+    list-style-type: square;
+}
+
+.heti li,
+.custom-md li {
+    margin-top: 0.25em;
+}
+
+/* ========== 上下标样式 ========== */
+
+.heti sub,
+.heti sup,
+.custom-md sub,
+.custom-md sup {
+    position: relative;
+    font-size: 0.75em;
+    vertical-align: baseline;
+    margin: 0 0.1em;
+}
+
+.heti sub,
+.custom-md sub {
+    bottom: -0.25em;
+}
+
+.heti sup,
+.custom-md sup {
+    top: -0.5em;
+}
+
+/* ========== 缩写样式 ========== */
+
+.heti abbr[title],
+.custom-md abbr[title] {
+    cursor: help;
+    border-bottom: 1px dotted var(--abbr-border, rgba(128, 128, 128, 0.5));
+    text-decoration: none;
+    padding-bottom: 0.25rem;
+}
+
+/* ========== 波浪下划线 ========== */
+
+.heti u,
+.custom-md u {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #ef4444;
+    text-underline-offset: 0.25em;
+}
+
+.dark .heti u,
+.dark .custom-md u {
+    text-decoration-color: rgba(239, 68, 68, 0.6);
+}
+
+/* ========== 键盘输入样式 ========== */
+
+.heti kbd,
+.custom-md kbd {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 0.85em;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: normal;
+    border: 1px solid var(--kbd-border, rgba(128, 128, 128, 0.4));
+    border-radius: 0.375rem;
+    color: var(--text-secondary);
+}
+
+/* ========== 高亮文本 ========== */
+
+.heti mark,
+.custom-md mark {
+    background-color: var(--highlight-bg, rgba(255, 235, 0, 0.5));
+    padding: 0.1em 0.15em;
+    color: inherit;
+}
+
+/* ========== 脚注样式 ========== */
+
+.heti sup a,
+.heti sub a,
+.custom-md sup a,
+.custom-md sub a {
+    text-decoration: none;
+}
+
+.heti sup:target,
+.heti sup a:target,
+.custom-md sup:target,
+.custom-md sup a:target {
+    background-color: var(--highlight-bg, rgba(255, 235, 0, 0.15));
+}
+
+.heti .data-footnote-backref,
+.custom-md .data-footnote-backref {
+    font-family: serif;
+    text-decoration: none;
+}
+
+/* ========== 水平分隔线 ========== */
+
+.heti hr,
+.custom-md hr {
+    margin: 3.5rem 0 2.5rem;
+    border: none;
+    height: auto;
+    text-align: center;
+}
+
+.heti hr::before,
+.custom-md hr::before {
+    content: "*   *   *";
+    white-space: pre;
+    font-size: 1.5rem;
+    font-family: serif;
+    color: var(--hr-color, rgba(128, 128, 128, 0.25));
+}
+
+/* ========== 粗体和斜体 ========== */
+
+.heti b,
+.heti strong,
+.custom-md b,
+.custom-md strong {
+    font-weight: 600;
+}
+
+.heti em,
+.custom-md em {
+    font-style: italic;
+}
+
+/* 中日韩语言斜体调整 */
+:lang(zh) .heti cite,
+:lang(ja) .heti cite,
+:lang(ko) .heti cite,
+:lang(zh) .custom-md cite,
+:lang(ja) .custom-md cite,
+:lang(ko) .custom-md cite {
+    font-style: normal;
+}
+
+/* ========== 引号样式（中日韩） ========== */
+
+.heti q:lang(zh),
+.heti q:lang(ja),
+.heti q:lang(ko),
+.custom-md q:lang(zh),
+.custom-md q:lang(ja),
+.custom-md q:lang(ko) {
+    quotes: "「" "」" "『" "』";
+}

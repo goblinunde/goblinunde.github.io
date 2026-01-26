@@ -1,0 +1,115 @@
+/* 当banner被禁用时的布局样式 */
+.no-banner-layout {
+    top: 5.5rem !important;
+    min-height: calc(100vh - 5.5rem) !important;
+}
+
+/* 隐藏已收起横幅或非横幅模式时的图片版权描述 */
+.no-banner-layout #banner-credit {
+    display: none !important;
+}
+
+
+/* 手机端无侧边栏布局优化 */
+@media (max-width: 768px) {
+    .mobile-no-sidebar {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .mobile-no-sidebar main {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .mobile-no-sidebar #content-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* 修复双侧边栏模式在移动端的布局问题 */
+    .mobile-both-sidebar {
+        /* 确保在移动端使用单列布局 */
+        grid-template-columns: 1fr !important;
+        /* 确保左右padding对称 */
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* 确保移动端主内容区域居中且全宽 */
+    .mobile-both-sidebar main {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    /* 移动端footer也要居中 */
+    .mobile-both-sidebar .footer {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* 小屏手机无侧边栏布局优化 */
+@media (max-width: 512px) {
+
+    /* 修复双侧边栏模式在移动端的布局问题 */
+    .mobile-both-sidebar {
+        /* 确保在移动端使用单列布局 */
+        grid-template-columns: 1fr !important;
+        /* 确保左右padding对称 */
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    /* 确保移动端主内容区域居中且全宽 */
+    .mobile-both-sidebar main {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    /* 移动端footer也要居中 */
+    .mobile-both-sidebar .footer {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* 全屏阅读按钮样式 */
+#fullscreen-reading-wrapper {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fullscreen-reading-wrapper .fullscreen-toggle {
+    width: 3rem;
+    height: 3rem;
+    box-shadow: 0 0 0 1px var(--btn-regular-bg), 0 0 1em var(--btn-regular-bg);
+    color: var(--primary);
+    border-radius: 1rem;
+    background: var(--card-bg);
+}
+
+#fullscreen-reading-wrapper .fullscreen-toggle:active {
+    transform: scale(0.9);
+}
+
+/* 默认隐藏，仅在文章页面显示 */
+#fullscreen-reading-wrapper {
+    display: none;
+}
+
+/* 当存在文章容器时显示 */
+body:has(#post-container) #fullscreen-reading-wrapper {
+    display: block;
+}
+
+/* 移动端调整位置 */
+@media (max-width: 768px) {
+    #fullscreen-reading-wrapper {
+        bottom: 10rem;
+        right: 0.5rem;
+    }
+}

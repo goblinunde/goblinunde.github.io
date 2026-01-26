@@ -1,0 +1,12 @@
+{
+    "title": "JAX",
+    "imgurl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Google_JAX_logo.svg",
+    "desc": "Google 开发的高性能数值计算库",
+    "siteurl": "https://jax.readthedocs.io/",
+    "tags": [
+        "深度学习",
+        "Google"
+    ]
+,
+    "category": "deeplearning"
+}

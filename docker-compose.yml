@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:80" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+  # 开发模式（可选，取消注释启用）
+  # dev:
+  #   image: node:22-alpine
+  #   working_dir: /app
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - "4321:4321"
+  #   command: sh -c "corepack enable && pnpm install && pnpm dev --host"

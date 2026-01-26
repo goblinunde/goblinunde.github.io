@@ -1,0 +1,12 @@
+{
+    "title": "Hugging Face",
+    "imgurl": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+    "desc": "开源 AI 社区，托管大量机器学习模型和数据集",
+    "siteurl": "https://huggingface.co/",
+    "tags": [
+        "AI",
+        "开源"
+    ]
+,
+    "category": "ai"
+}

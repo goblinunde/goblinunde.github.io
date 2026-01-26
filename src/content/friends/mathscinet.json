@@ -1,0 +1,12 @@
+{
+    "title": "MathSciNet",
+    "imgurl": "https://mathscinet.ams.org/images/msn-logo-2x.png",
+    "desc": "美国数学学会数学文献数据库",
+    "siteurl": "https://mathscinet.ams.org/",
+    "tags": [
+        "数学",
+        "文献"
+    ]
+,
+    "category": "journal"
+}

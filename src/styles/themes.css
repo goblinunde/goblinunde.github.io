@@ -1,0 +1,15 @@
+/* 
+ * 预设主题定义
+ * 💡 主题通过 ThemeSwitcher 组件直接调用 setHue() 设置 --hue CSS 变量
+ * 此文件仅作为主题色参考说明
+ *
+ * 可用主题及对应 Hue 值:
+ * - Twilight (默认紫色): 255
+ * - Sakura (樱花粉): 345
+ * - Forest (森林绿): 120
+ * - Sunset (落日橙): 30
+ * - Ocean (海洋蓝): 200
+ * - Crimson (深红): 0
+ * - Gold (金色): 45
+ * - Mint (薄荷绿): 160
+ */

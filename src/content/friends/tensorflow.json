@@ -1,0 +1,12 @@
+{
+    "title": "TensorFlow",
+    "imgurl": "https://www.tensorflow.org/images/tf_logo_social.png",
+    "desc": "Google 开发的开源机器学习框架",
+    "siteurl": "https://www.tensorflow.org/",
+    "tags": [
+        "深度学习",
+        "框架"
+    ]
+,
+    "category": "deeplearning"
+}

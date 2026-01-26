@@ -1,0 +1,12 @@
+{
+    "title": "ICLR",
+    "imgurl": "https://iclr.cc/static/core/img/ICLR-logo.svg",
+    "desc": "国际学习表征会议，顶级深度学习会议",
+    "siteurl": "https://iclr.cc/",
+    "tags": [
+        "AI",
+        "顶会"
+    ]
+,
+    "category": "conference"
+}

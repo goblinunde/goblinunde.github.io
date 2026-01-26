@@ -1,0 +1,155 @@
+/**
+ * KaTeX 样式增强
+ * 优化数学公式渲染，适配深色/浅色主题
+ */
+
+/* 💡 行内公式样式优化 */
+.katex {
+    font-size: 1.05em;
+    font-weight: 400;
+}
+
+/* 💡 块级公式容器 */
+.math-display,
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+    margin: 1.5rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb, rgba(128, 128, 128, 0.3)) transparent;
+}
+
+/* 块级公式居中 */
+.katex-display>.katex {
+    display: inline-block;
+    text-align: center;
+}
+
+/* 💡 深色模式适配 - 增强版，确保所有公式元素可见 */
+[data-theme="dark"] .katex,
+.dark .katex {
+    color: var(--katex-color-dark, #e4e4e7) !important;
+}
+
+/* 💡 强制所有 KaTeX 子元素继承浅色 */
+[data-theme="dark"] .katex *,
+.dark .katex * {
+    color: inherit !important;
+}
+
+/* 💡 确保 MathML 和 HTML 渲染都适配 */
+[data-theme="dark"] .katex .katex-html,
+.dark .katex .katex-html {
+    color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] .katex .katex-mathml,
+.dark .katex .katex-mathml {
+    color: #e4e4e7 !important;
+}
+
+/* 💡 特殊元素颜色覆盖（数学符号、运算符等） */
+[data-theme="dark"] .katex .mord,
+[data-theme="dark"] .katex .mop,
+[data-theme="dark"] .katex .mbin,
+[data-theme="dark"] .katex .mrel,
+[data-theme="dark"] .katex .mopen,
+[data-theme="dark"] .katex .mclose,
+[data-theme="dark"] .katex .mpunct,
+[data-theme="dark"] .katex .minner,
+.dark .katex .mord,
+.dark .katex .mop,
+.dark .katex .mbin,
+.dark .katex .mrel,
+.dark .katex .mopen,
+.dark .katex .mclose,
+.dark .katex .mpunct,
+.dark .katex .minner {
+    color: #e4e4e7 !important;
+}
+
+/* 💡 分数线颜色 */
+[data-theme="dark"] .katex .frac-line,
+.dark .katex .frac-line {
+    border-bottom-color: #e4e4e7 !important;
+}
+
+/* 💡 根号顶部线条颜色 */
+[data-theme="dark"] .katex .sqrt>.root,
+.dark .katex .sqrt>.root {
+    border-top-color: #e4e4e7 !important;
+}
+
+/* 💡 下划线和上划线 */
+[data-theme="dark"] .katex .underline-line,
+[data-theme="dark"] .katex .overline-line,
+.dark .katex .underline-line,
+.dark .katex .overline-line {
+    border-bottom-color: #e4e4e7 !important;
+}
+
+/* 💡 矩阵竖线 */
+[data-theme="dark"] .katex .vlist-t,
+.dark .katex .vlist-t {
+    color: #e4e4e7 !important;
+}
+
+/* 浅色模式 */
+[data-theme="light"] .katex,
+:not(.dark) .katex {
+    color: var(--katex-color-light, #18181b);
+}
+
+/* 💡 公式编号样式（可选，用于论文风格） */
+.equation-number {
+    float: right;
+    margin-right: 1rem;
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.875rem;
+}
+
+/* 💡 公式引用高亮 */
+.katex-display:target {
+    background-color: var(--highlight-bg, rgba(255, 235, 0, 0.15));
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+/* 💡 长公式滚动条美化 */
+.katex-display:hover {
+    scrollbar-color: var(--scrollbar-thumb-hover, rgba(128, 128, 128, 0.5)) transparent;
+}
+
+/* 💡 矩阵和大括号优化 */
+.katex .mord.mtable {
+    margin: 0.25rem 0;
+}
+
+/* 分数线增强 */
+.katex .frac-line {
+    border-bottom-width: 0.05em;
+}
+
+/* 💡 下标/上标调整 */
+.katex .msupsub {
+    text-align: left;
+}
+
+/* 💡 积分、求和符号大小调整 */
+.katex .op-symbol.large-op {
+    font-size: 1.5em;
+}
+
+/* 💡 公式中的文本样式 */
+.katex .text {
+    font-family: inherit;
+}
+
+/* 💡 错误显示优化 */
+.katex .katex-error {
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
