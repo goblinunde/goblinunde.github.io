@@ -1,0 +1,215 @@
+---
+/**
+ * 卡片轮播组件
+ * 支持自动播放、触摸滑动、指示器
+ * 
+ * 使用方法:
+ * <CardCarousel items={[{title, description, image, link}]} autoplay />
+ */
+
+interface CarouselItem {
+  title: string;
+  description?: string;
+  image?: string;
+  link?: string;
+  icon?: string;
+}
+
+interface Props {
+  items: CarouselItem[];
+  autoplay?: boolean;
+  interval?: number; // 毫秒
+  showIndicators?: boolean;
+  showArrows?: boolean;
+  class?: string;
+}
+
+const { 
+  items, 
+  autoplay = true, 
+  interval = 4000,
+  showIndicators = true,
+  showArrows = true,
+  class: className 
+} = Astro.props;
+
+const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div 
+  class:list={['card-carousel relative overflow-hidden rounded-2xl', className]}
+  id={carouselId}
+  data-autoplay={autoplay}
+  data-interval={interval}
+>
+  <!-- 轮播容器 -->
+  <div class="carousel-track flex transition-transform duration-500 ease-out">
+    {items.map((item, index) => (
+      <div class="carousel-slide flex-shrink-0 w-full p-6" data-index={index}>
+        <div class="card-content bg-white/10 dark:bg-black/20 backdrop-blur-lg rounded-xl p-6 border border-white/20 dark:border-white/10 h-full">
+          {item.image && (
+            <div class="card-image mb-4 overflow-hidden rounded-lg">
+              <img 
+                src={item.image} 
+                alt={item.title}
+                class="w-full h-40 object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          )}
+          {item.icon && (
+            <div class="card-icon text-4xl mb-4">{item.icon}</div>
+          )}
+          <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+            {item.link ? (
+              <a href={item.link} class="hover:text-primary-500 transition-colors">
+                {item.title}
+              </a>
+            ) : item.title}
+          </h3>
+          {item.description && (
+            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+              {item.description}
+            </p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- 箭头 -->
+  {showArrows && items.length > 1 && (
+    <>
+      <button 
+        class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 dark:bg-black/50 backdrop-blur flex items-center justify-center text-gray-700 dark:text-white hover:bg-white dark:hover:bg-black/70 transition-all shadow-lg"
+        aria-label="上一张"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button 
+        class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 dark:bg-black/50 backdrop-blur flex items-center justify-center text-gray-700 dark:text-white hover:bg-white dark:hover:bg-black/70 transition-all shadow-lg"
+        aria-label="下一张"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </>
+  )}
+
+  <!-- 指示器 -->
+  {showIndicators && items.length > 1 && (
+    <div class="carousel-indicators flex justify-center gap-2 mt-4 pb-4">
+      {items.map((_, index) => (
+        <button 
+          class:list={[
+            'indicator w-2 h-2 rounded-full transition-all',
+            index === 0 ? 'bg-primary-500 w-6' : 'bg-gray-400/50 hover:bg-gray-400'
+          ]}
+          data-index={index}
+          aria-label={`跳转到第 ${index + 1} 页`}
+        />
+      ))}
+    </div>
+  )}
+</div>
+
+<script>
+  class CardCarousel {
+    container: HTMLElement;
+    track: HTMLElement;
+    slides: HTMLElement[];
+    indicators: HTMLElement[];
+    currentIndex: number = 0;
+    autoplayInterval: number | null = null;
+    
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.track = container.querySelector('.carousel-track')!;
+      this.slides = Array.from(container.querySelectorAll('.carousel-slide'));
+      this.indicators = Array.from(container.querySelectorAll('.indicator'));
+      
+      this.init();
+    }
+    
+    init() {
+      // 箭头事件
+      this.container.querySelector('.carousel-prev')?.addEventListener('click', () => this.prev());
+      this.container.querySelector('.carousel-next')?.addEventListener('click', () => this.next());
+      
+      // 指示器事件
+      this.indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => this.goTo(index));
+      });
+      
+      // 触摸滑动
+      let startX = 0;
+      this.track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        this.stopAutoplay();
+      });
+      this.track.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? this.next() : this.prev();
+        }
+        this.startAutoplay();
+      });
+      
+      // 自动播放
+      if (this.container.dataset.autoplay === 'true') {
+        this.startAutoplay();
+        this.container.addEventListener('mouseenter', () => this.stopAutoplay());
+        this.container.addEventListener('mouseleave', () => this.startAutoplay());
+      }
+    }
+    
+    goTo(index: number) {
+      this.currentIndex = index;
+      this.track.style.transform = `translateX(-${index * 100}%)`;
+      this.updateIndicators();
+    }
+    
+    next() {
+      this.goTo((this.currentIndex + 1) % this.slides.length);
+    }
+    
+    prev() {
+      this.goTo((this.currentIndex - 1 + this.slides.length) % this.slides.length);
+    }
+    
+    updateIndicators() {
+      this.indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('bg-primary-500', index === this.currentIndex);
+        indicator.classList.toggle('w-6', index === this.currentIndex);
+        indicator.classList.toggle('bg-gray-400/50', index !== this.currentIndex);
+        indicator.classList.toggle('w-2', index !== this.currentIndex);
+      });
+    }
+    
+    startAutoplay() {
+      const interval = parseInt(this.container.dataset.interval || '4000');
+      this.autoplayInterval = window.setInterval(() => this.next(), interval);
+    }
+    
+    stopAutoplay() {
+      if (this.autoplayInterval) {
+        clearInterval(this.autoplayInterval);
+        this.autoplayInterval = null;
+      }
+    }
+  }
+  
+  // 初始化所有轮播
+  document.querySelectorAll('.card-carousel').forEach(container => {
+    new CardCarousel(container as HTMLElement);
+  });
+</script>
+
+<style>
+  .card-carousel {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+  }
+</style>

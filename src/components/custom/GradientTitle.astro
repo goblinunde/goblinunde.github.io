@@ -1,0 +1,76 @@
+---
+/**
+ * 渐变文字标题组件
+ * 支持多种渐变效果和动画
+ * 
+ * 使用方法:
+ * <GradientTitle text="标题文字" gradient="rainbow" animated />
+ */
+
+interface Props {
+  text: string;
+  gradient?: 'rainbow' | 'sunset' | 'ocean' | 'forest' | 'purple' | 'gold' | 'custom';
+  customColors?: string; // 自定义渐变，如 "from-pink-500 via-purple-500 to-indigo-500"
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  animated?: boolean;
+  class?: string;
+}
+
+const { 
+  text, 
+  gradient = 'rainbow', 
+  customColors,
+  size = 'xl',
+  animated = false,
+  class: className 
+} = Astro.props;
+
+const gradients = {
+  rainbow: 'linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff)',
+  sunset: 'linear-gradient(90deg, #f093fb, #f5576c, #ffecd2)',
+  ocean: 'linear-gradient(90deg, #667eea, #764ba2, #6dd5ed)',
+  forest: 'linear-gradient(90deg, #134e5e, #71b280, #a8e063)',
+  purple: 'linear-gradient(90deg, #a855f7, #ec4899, #6366f1)',
+  gold: 'linear-gradient(90deg, #f59e0b, #eab308, #fbbf24, #d97706)',
+  custom: customColors || 'linear-gradient(90deg, #667eea, #764ba2)'
+};
+
+const sizes = {
+  sm: 'text-lg',
+  md: 'text-xl',
+  lg: 'text-2xl',
+  xl: 'text-3xl',
+  '2xl': 'text-4xl md:text-5xl'
+};
+---
+
+<span 
+  class:list={[
+    'gradient-title font-bold inline-block',
+    sizes[size],
+    animated && 'gradient-animated',
+    className
+  ]}
+  style={`background: ${gradients[gradient]}; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;`}
+>
+  {text}
+</span>
+
+<style>
+  .gradient-title {
+    background-size: 200% auto;
+  }
+  
+  .gradient-animated {
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+</style>
