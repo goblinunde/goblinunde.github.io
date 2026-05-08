@@ -1,8 +1,9 @@
 /* This is a script to compile inline Stylus */
 
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 // Recursively list files under a directory
 function walk(dir) {
@@ -22,19 +23,23 @@ if (!fs.existsSync(srcDir)) {
   process.exit(1);
 }
 
-const files = walk(srcDir);
+const files = walk(srcDir).filter(f => !f.endsWith('.tmp.styl'));
 
 const styleBlockRe = /<style[^>]*lang=["']stylus["'][^>]*>([\s\S]*?)<\/style>/ig;
 const npxCmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';
-const outNull = process.platform === 'win32' ? 'nul' : '/dev/null';
 
 let failed = false;
 
 function compileStylusContent(content, tmpPath) {
-  fs.writeFileSync(tmpPath, content, 'utf8');
+  const workDir = fs.mkdtempSync(path.join(os.tmpdir(), 'stylus-check-'));
+  const outDir = path.join(workDir, 'out');
+  const inputPath = path.join(workDir, path.basename(tmpPath));
+
+  fs.mkdirSync(outDir);
+  fs.writeFileSync(inputPath, content, 'utf8');
   try {
-    execSync(`${npxCmd} stylus "${tmpPath}" -o ${outNull}`, { stdio: 'pipe' });
-    fs.unlinkSync(tmpPath);
+    execFileSync(npxCmd, ['stylus', inputPath, '-o', outDir], { stdio: 'pipe' });
+    fs.rmSync(workDir, { recursive: true, force: true });
     return { ok: true };
   } catch (err) {
     const msg = err.stderr ? err.stderr.toString() : err.message;

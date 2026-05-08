@@ -51,13 +51,13 @@ let links: NavbarLink[] = navbarConfig.links.map(
             })}
         </div>
         <div class="flex items-center navbar-buttons" id="navbar-buttons">
-            <Search client:load="svelte"></Search>
-            <Translator client:load="svelte"></Translator>
-            <DisplaySettings client:load="svelte"></DisplaySettings>
-            <ThemeSwitcher client:load="svelte"></ThemeSwitcher>
-            <LightDarkSwitch client:load="svelte"></LightDarkSwitch>
-            <WallpaperSwitch client:load="svelte"></WallpaperSwitch>
-            <NavMenu client:load="svelte" links={links}></NavMenu>
+            <Search client:load></Search>
+            <Translator client:load></Translator>
+            <DisplaySettings client:load></DisplaySettings>
+            <ThemeSwitcher client:load></ThemeSwitcher>
+            <LightDarkSwitch client:load></LightDarkSwitch>
+            <WallpaperSwitch client:load></WallpaperSwitch>
+            <NavMenu client:load links={links}></NavMenu>
         </div>
     </div>
 </div>
