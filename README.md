@@ -292,19 +292,19 @@ DEPLOY_SERVER=user@example.com DEPLOY_PATH=/var/www/blog make deploy-server
 
 ## 文章导览
 
-当前仓库共有 23 篇文章，分布在 4 个分类中：
+当前仓库共有 24 篇文章，分布在 4 个分类中：
 
 ```text
 📊 博客统计信息:
 
-📝 总文章数: 23
-✅ 已发布: 23
+📝 总文章数: 24
+✅ 已发布: 24
 📝 草稿: 0
 ```
 
 | 分类 | 数量 | 内容重心 |
 | --- | ---: | --- |
-| `Mathematics` | 14 | PDE、数学分析、数值方法、PINN、LaTeX |
+| `Mathematics` | 15 | PDE、数学分析、数值方法、PINN、LaTeX |
 | `Programming` | 4 | 深度学习和神经网络结构 |
 | `Linux` | 3 | Fedora、发行版、桌面环境和显示协议 |
 | `Guides` | 2 | 博客模板说明和自定义组件展示 |
@@ -316,7 +316,7 @@ DEPLOY_SERVER=user@example.com DEPLOY_PATH=/var/www/blog make deploy-server
 | 内容分组 | 数量 | 对应文章 | 分类与标签维护 |
 | --- | ---: | --- | --- |
 | PDE 主线与科学机器学习 | 7 | PDE 入门、理论求解、数值方法、数值模拟、学习资源、PINN、fPINN | `category: Mathematics`；核心标签使用 `PDE`、`Numerical Analysis`、`PINN`、`Scientific Machine Learning` |
-| Evans PDE 教材精读 | 3 | Evans 前言目录、Chapter 1、Chapter 2 | `category: Mathematics`；统一使用 `PDE`、`Evans`、`Translation`、`Study Notes` |
+| Evans PDE 教材精读 | 4 | Evans 前言目录、Chapter 1、Chapter 2、Chapter 3 | `category: Mathematics`；统一使用 `PDE`、`Evans`、`Study Notes`，章节翻译再加 `Translation` |
 | 数学基础与 LaTeX | 4 | 实分析三性原理、抽屉原理、拓扑入门、LaTeX 高级功能 | `category: Mathematics`；按主题补充 `Real Analysis`、`Set Theory`、`Topology`、`LaTeX` |
 | 深度学习与神经网络 | 4 | 正则化、CNN、RNN、Transformer | `category: Programming`；统一使用 `Deep Learning`，再补充模型标签 |
 | Linux 系统与桌面 | 3 | Linux 发行版、Fedora / DNF、桌面环境与显示协议 | `category: Linux`；统一使用 `Linux`，再补充发行版、工具或协议标签 |
@@ -349,14 +349,17 @@ Evans 系列用于教材精读、目录整理和章节译注，参考资料在 [
 | 1 | [Evans《偏微分方程》第二版：前言、书目信息与目录中译](src/content/posts/evans-pde-frontmatter-zh.md) | 先看书目信息、前言和目录，了解全书结构。 |
 | 2 | [Chapter 1：Introduction 中译与学习注释](src/content/posts/evans-pde-chapter-1-introduction-zh.md) | 梳理第一章的引言、基本例子和学习注释。 |
 | 3 | [Chapter 2：四类重要线性 PDE 中译与学习注释](src/content/posts/evans-pde-chapter-2-four-important-linear-pdes-zh.md) | 进入输运方程、Laplace 方程、热方程和波方程。 |
+| 4 | [Chapter 3：非线性一阶 PDE 学习整理](src/content/posts/evans-pde-chapter-3-nonlinear-first-order-pdes-zh.md) | 梳理完整积分、包络、特征线、Hamilton-Jacobi 方程和守恒律。 |
 
 后续新增 Evans 章节时，建议继续使用同一文件命名和标签组合：
 
 ```text
 evans-pde-chapter-<n>-<topic>-zh.md
-tags: [PDE, Evans, Translation, Study Notes]
+tags: [PDE, Evans, Study Notes]
 category: Mathematics
 ```
+
+如果是章节中译或译注稿，再补充 `Translation`；如果是内容整理或专题讲解，则使用 `Nonlinear PDE`、`First-Order PDE` 等主题标签。
 
 ### 数学基础与排版工具
 
@@ -421,18 +424,18 @@ category: Mathematics
 
 | 标签 | 数量 | 建议用途 |
 | --- | ---: | --- |
-| `PDE` | 9 | 偏微分方程主标签 |
+| `PDE` | 10 | 偏微分方程主标签 |
 | `Mathematics` | 5 | 数学基础或跨数学主题文章 |
 | `Deep Learning` | 5 | 深度学习总标签 |
 | `Neural Networks` | 4 | 神经网络结构与训练 |
-| `Evans` | 3 | Evans PDE 教材系列 |
+| `Evans` | 4 | Evans PDE 教材系列 |
 | `Linux` | 3 | Linux 相关文章 |
+| `Study Notes` | 3 | 学习注释和读书笔记 |
 | `Translation` | 3 | 翻译、译注、章节整理 |
 | `LaTeX` | 2 | LaTeX 与排版 |
 | `NLP` | 2 | 自然语言处理相关内容 |
 | `Numerical Analysis` | 2 | 数值分析与 PDE 数值方法 |
 | `PINN` | 2 | Physics-Informed Neural Networks |
-| `Study Notes` | 2 | 学习注释和读书笔记 |
 
 ### 标签层级
 
