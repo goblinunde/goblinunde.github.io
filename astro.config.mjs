@@ -70,7 +70,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 // https://astro.build/config
 // 💡 智能选择部署模式：GitHub Pages / Cloudflare / Vercel
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const adapter = process.env.CF_PAGES ? cloudflarePages() : vercel({ mode: "serverless" });
+const adapter = process.env.CF_PAGES ? cloudflarePages({ imageService: "compile" }) : vercel({ mode: "serverless" });
 
 export default defineConfig({
     site: siteConfig.siteURL,
