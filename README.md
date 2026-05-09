@@ -294,12 +294,35 @@ DEPLOY_SERVER=user@example.com DEPLOY_PATH=/var/www/blog make deploy-server
 
 当前仓库共有 23 篇文章，分布在 4 个分类中：
 
+```text
+📊 博客统计信息:
+
+📝 总文章数: 23
+✅ 已发布: 23
+📝 草稿: 0
+```
+
 | 分类 | 数量 | 内容重心 |
 | --- | ---: | --- |
 | `Mathematics` | 14 | PDE、数学分析、数值方法、PINN、LaTeX |
 | `Programming` | 4 | 深度学习和神经网络结构 |
 | `Linux` | 3 | Fedora、发行版、桌面环境和显示协议 |
 | `Guides` | 2 | 博客模板说明和自定义组件展示 |
+
+### 博客内容整理分类
+
+按实际内容线索，可以把当前博客整理成 6 个阅读与维护分组：
+
+| 内容分组 | 数量 | 对应文章 | 分类与标签维护 |
+| --- | ---: | --- | --- |
+| PDE 主线与科学机器学习 | 7 | PDE 入门、理论求解、数值方法、数值模拟、学习资源、PINN、fPINN | `category: Mathematics`；核心标签使用 `PDE`、`Numerical Analysis`、`PINN`、`Scientific Machine Learning` |
+| Evans PDE 教材精读 | 3 | Evans 前言目录、Chapter 1、Chapter 2 | `category: Mathematics`；统一使用 `PDE`、`Evans`、`Translation`、`Study Notes` |
+| 数学基础与 LaTeX | 4 | 实分析三性原理、抽屉原理、拓扑入门、LaTeX 高级功能 | `category: Mathematics`；按主题补充 `Real Analysis`、`Set Theory`、`Topology`、`LaTeX` |
+| 深度学习与神经网络 | 4 | 正则化、CNN、RNN、Transformer | `category: Programming`；统一使用 `Deep Learning`，再补充模型标签 |
+| Linux 系统与桌面 | 3 | Linux 发行版、Fedora / DNF、桌面环境与显示协议 | `category: Linux`；统一使用 `Linux`，再补充发行版、工具或协议标签 |
+| 博客模板与组件 | 2 | 博客模板指南、自定义组件展示 | `category: Guides`；使用 `Markdown`、`LaTeX`、`Mermaid`、`Components`、`UI` 等功能标签 |
+
+后续新增文章时，优先先判断它属于上面哪一组，再决定 `category` 和 `tags`。如果一篇文章连接多个方向，例如 PDE 与深度学习交叉，`category` 仍保持一个主类，交叉关系用标签表达。
 
 下面的链接指向仓库中的 Markdown 源文件。站点访问路径通常是 `/posts/<slug>/`。
 
